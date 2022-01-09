@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import cores from "../cores/index";
+
+var cor = cores();
 
 export const Container = styled.div`
     width: 100%;
     height:70px;
-    background: #20295F;
+    background: ${cor.primaryColor};
     display: flex;
-    border-bottom: 5px solid #EE6B26;
+    border-bottom: 5px solid ${cor.seccundaryColor};
 
 
 `
@@ -36,7 +39,7 @@ export const RightSide = styled.div`
         margin: 0 10px;
 
         &:hover {
-            color: #EE6B26;
+            color: ${cor.seccundaryColor};
         }
 
     }

@@ -2,8 +2,13 @@ import React from 'react';
 
 
 function cores (){
-    const primaryColor = "#EE6B26";
-    const seccundaryColor = "#20295F";
+
+    // #731034
+    // #BF7A8D
+    // #590E2A
+
+    const primaryColor = "#731034";  
+    const seccundaryColor = "#BF7A8D";
     const cinza = "#707070";
     const branco = "#FFF";
 

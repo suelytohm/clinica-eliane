@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import cores from "../cores/index";
 
-
-
 var cor = cores();
 
 export const Container = styled.div`
