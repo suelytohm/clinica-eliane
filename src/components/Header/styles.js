@@ -50,8 +50,8 @@ export const RightSide = styled.div`
         }
 
         span {
-            background: #FFF;
-            color: ${cor.seccundaryColor};
+            background: ${cor.seccundaryColor};
+            color: ${cor.branco};
             padding: 3px 7px;
             border-radius: 50%;
             position: relative;

@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from "./styles";
 
 import logo from '../../assets/logo4.png';
-import bell from '../../assets/bell.png';
+import bell from '../../assets/bell2.png';
 
 
 function Header() {
