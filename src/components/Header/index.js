@@ -22,8 +22,6 @@ function Header() {
           <img src={bell} alt="Notificação" />
           <span>5</span>
         </a>
-        
-
       </S.RightSide>
     </S.Container>
 

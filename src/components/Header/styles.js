@@ -51,7 +51,7 @@ export const RightSide = styled.div`
 
         span {
             background: #FFF;
-            color: #EE6B26;
+            color: ${cor.seccundaryColor};
             padding: 3px 7px;
             border-radius: 50%;
             position: relative;
