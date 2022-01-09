@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import { format } from 'date-fns';
 import * as S from "./styles";
 
-import iconDefault from "../../assets/default.png";
+import iconDefault from "../../assets/default2.png";
 
 
 
