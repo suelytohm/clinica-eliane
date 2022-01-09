@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from "./styles";
 
-import logo from '../../assets/logo2.png';
+import logo from '../../assets/logo3.png';
 import bell from '../../assets/bell.png';
 
 
