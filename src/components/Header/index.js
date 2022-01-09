@@ -14,7 +14,7 @@ function Header() {
       <S.RightSide>
         <a href="#">Início</a>
         <span className="dividir" />
-        <a href="#">Nova Tarefa</a>
+        <a href="#">Clientes</a>
         <span className="dividir" />
         <a href="#">Sincronizar</a>
         <span className="dividir" />
