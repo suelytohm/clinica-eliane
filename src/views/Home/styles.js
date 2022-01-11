@@ -39,12 +39,13 @@ export const Title = styled.div`
     justify-content: center;
     margin-bottom: 20px;
 
-    h3 {
+    h1 {
         color: ${cor.seccundaryColor};
         position: relative;
-        top: 27px;
+        top: 38px;
         background: ${cor.branco};
         padding: 0 20px;
+        
     }
 
 `

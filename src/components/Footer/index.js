@@ -8,7 +8,7 @@ import bell from '../../assets/bell.png';
 function Footer() {
   return (
     <S.Container>
-        <span>ToDo - Organizando sua vida</span>
+        <span>ToDo - Simplificando sua vida</span>
     </S.Container>
 
   )

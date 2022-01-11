@@ -2,32 +2,35 @@ import React, {useMemo} from 'react';
 import { format } from 'date-fns';
 import * as S from "./styles";
 
-import iconDefault from "../../assets/default2.png";
+import typeIcons from "../../utils/typeIcons";
 
 
+function TaskCard({ type, title, when, valor, done, description }) {
 
-function TaskCard({ type, title, when, valor, done }) {
+  const date = useMemo(() => 
+    format(new Date(when), 'dd/MM/yyyy')
+  );
 
-  const date = useMemo(() => {
-    format(new Date(when), 'dd/MM/yyyy');
-  });
+  const hour = useMemo(() => 
+    format(new Date(when), 'HH:mm')
+  );
 
-  const hour = useMemo(() => {
-    format(new Date(when), 'HH:mm');
-  });
+  const valorConvertido = useMemo(() =>
+    parseFloat(valor).toFixed(2)
+  );
 
 
   return (
     <S.Container>
       <S.TopCard>
-        <img src={iconDefault} alt="Icone da tarefa" />
+        <img src={typeIcons[type]} alt="Icone da tarefa" />
         <h3>{title}</h3>
-        <span>R$ {valor} - {type}</span>
-        
+        <span>{description}</span>
+        <span>Agendado para: {date}</span>        
       </S.TopCard>
       <S.BottomCard>
-        <strong>{date}</strong>
-        <span>{hour}</span>
+        <h4>{hour} hrs</h4>
+        <h4>Valor: R$ {valorConvertido}</h4>
       </S.BottomCard>
     </S.Container>
 

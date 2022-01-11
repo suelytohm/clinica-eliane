@@ -13,24 +13,40 @@ function Home() {
   
   const [filterActived, setFilterActived] = useState('today');
   const [tasks, setTasks] = useState([]);
-
+  const [lateCount, setLateCount] = useState();
+  const [titulo, setTitulo] = useState();
 
   // https://check-to-do.herokuapp.com/
   async function loadTasks() {
     await api.get(`https://check-to-do.herokuapp.com/task/filter/${filterActived}/11-11-11-11-11-11`)
     .then(response => {
-      console.log(response.data);
       setTasks(response.data);
     })
   }
 
+
+
+  async function lateVerify(){
+    await api.get(`https://check-to-do.herokuapp.com/task/filter/late/11-11-11-11-11-11`)
+    .then(response => {
+      setLateCount(response.data.length);
+    })    
+  }
+
+
+  function Notification(){
+    setFilterActived('late');
+
+  }
+
   useEffect(() => {
     loadTasks();
+    lateVerify();
   }, [filterActived])
 
   return (
     <S.Container>
-      <Header />
+      <Header lateCount={lateCount} clickNotification={Notification} />
 
       <S.FilterArea>
         <button type="button" onClick={() => setFilterActived("all")}>
@@ -51,13 +67,13 @@ function Home() {
       </S.FilterArea>
 
       <S.Title>
-        <h3>Tarefas</h3>
+        <h1>{filterActived === 'late' ? 'Agendamentos Atrasados' : 'Agendamentos'}</h1>
       </S.Title>
 
       <S.Content>
         {
           tasks.map(t => (
-           <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} />
+           <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} description={t.description} />
           ))
         }
       </S.Content>
