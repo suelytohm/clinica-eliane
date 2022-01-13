@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Redirect} from 'react-router-dom';
 import * as S from "./styles";
 import {format} from 'date-fns';
 
@@ -27,7 +28,7 @@ function Task({match}) {
 
     const [macaddress, setMacaddress] = useState('11-11-11-11-11-11');
     
-
+    const [redirect, setRedirect] = useState(false);
 
 
   async function lateVerify(){
@@ -42,6 +43,7 @@ function Task({match}) {
       .then(response => {
         setType(response.data.type)
         setTitle(response.data.title)
+        setDone(response.data.done)
         setDescription(response.data.description)
         setValue(response.data.value)
         setDate(format(new Date(response.data.when), 'yyyy-MM-dd' ))
@@ -50,16 +52,54 @@ function Task({match}) {
   }
 
   async function Save(){
-      await api.post('https://check-to-do.herokuapp.com/task', {
-          macaddress,
-          type,
-          title,
-          description,
-          value,
-          when: `${date}T${hour}:00.000`
-      }).then(()=>
-          alert('TAREFA CADASTRADA COM SUCESSO!')
-      )
+      // Validação dos dados
+
+    if(!title)
+       return alert("Você precisa informar o nome!")
+    else if(!description)
+        return alert("Você precisa informar a descrição!")
+    else if(!type)
+        return alert("Você precisa selecionar um avatar!")
+    else if(!value)
+        return alert("Você precisa informar o valor!")       
+    else if(!date)
+        return alert("Você precisa informar a data!")    
+    else if(!hour)
+        return alert("Você precisa informar a hora!")                       
+        
+
+
+
+
+
+    if(match.params.id){
+        await api.put(`https://check-to-do.herokuapp.com/task/${match.params.id}`, {
+            macaddress,
+            done,
+            type,
+            title,
+            description,
+            value,
+            when: `${date}T${hour}:00.000`
+        }).then(()=>
+            setRedirect(true)
+        )
+
+        
+    }else{
+        await api.post('https://check-to-do.herokuapp.com/task', {
+            macaddress,
+            type,
+            done,
+            title,
+            description,
+            value,
+            when: `${date}T${hour}:00.000`
+        }).then(()=>
+            setRedirect(true)
+        )
+    }
+
   }
 
   useEffect(() => {
@@ -69,6 +109,7 @@ function Task({match}) {
 
   return (
     <S.Container>
+        {redirect && <Redirect to="/" />}
       <Header lateCount={lateCount} />
 
       <S.Form>

@@ -17,11 +17,14 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     margin: 10px;
-
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
+    opacity: ${props => props.done ? 0.8 : 1};
+    background: ${props => props.done ? cor.success : cor.seccundaryColor};
+    color: ${props => props.done ? cor.branco : '#fff'};
+
 
     img {
         max-width: 35%;

@@ -11,12 +11,14 @@ function cores (){
     const seccundaryColor = "#BF7A8D";
     const cinza = "#707070";
     const branco = "#FFF";
+    const success = "#1a936f";
 
     return ({
         primaryColor, 
         seccundaryColor, 
         cinza,
-        branco
+        branco,
+        success
     })
 }
 
