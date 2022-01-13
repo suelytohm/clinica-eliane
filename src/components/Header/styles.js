@@ -44,7 +44,7 @@ export const RightSide = styled.div`
         color: #FFF;
         font-weight: bold;
         text-decoration: none;
-        margin: 0 10px;
+        margin: 0 0px;
 
         &:hover {
             color: ${cor.seccundaryColor};

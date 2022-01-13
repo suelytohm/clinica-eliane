@@ -15,7 +15,7 @@ function Header({ lateCount, clickNotification }) {
       <S.RightSide>
         <Link to="/">Início</Link>
         <span className="dividir" />
-        <Link to="/task">Agendamento</Link>
+        <Link to="/task">Agendar</Link>
         <span className="dividir" />
         <a href="#">Clientes</a>
         <span className="dividir" />

@@ -41,6 +41,7 @@ export const TopCard = styled.div`
 
     span {
         margin-top: 10px;
+        text-align: center; 
     }
 
 `
