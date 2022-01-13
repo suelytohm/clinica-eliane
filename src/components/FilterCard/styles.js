@@ -4,7 +4,7 @@ import cores from "../cores/index";
 var cor = cores();
 
 export const Container = styled.div`
-    width: 250px;
+    width: 60px;
     height: 60px;
     background: ${props=> props.actived ? cor.primaryColor : cor.seccundaryColor };
     padding: 10px;

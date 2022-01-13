@@ -17,7 +17,7 @@ function Header({ lateCount, clickNotification }) {
         <span className="dividir" />
         <Link to="/task">Agendamento</Link>
         <span className="dividir" />
-        <a href="#">Sincronizar</a>
+        <a href="#">Clientes</a>
         <span className="dividir" />
         <button id="notification" onClick={clickNotification}>
           <img src={bell} alt="Notificação" />
