@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import * as S from "./styles";
 import api from "../../services/api";
 
@@ -14,7 +15,7 @@ function Home() {
   const [filterActived, setFilterActived] = useState('today');
   const [tasks, setTasks] = useState([]);
   const [lateCount, setLateCount] = useState();
-  const [titulo, setTitulo] = useState();
+
 
   // https://check-to-do.herokuapp.com/
   async function loadTasks() {
@@ -73,7 +74,9 @@ function Home() {
       <S.Content>
         {
           tasks.map(t => (
-           <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} description={t.description} />
+            <Link to={`/task/${t._id}`}>
+              <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} description={t.description} />
+            </Link>
           ))
         }
       </S.Content>

@@ -10,10 +10,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     
+    
 `
 
 export const Form = styled.div`
-    width: 80%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    
+
 
 `
 
@@ -21,6 +25,7 @@ export const TypeIcons = styled.div`
 
     width: 100%;
     justify-content: center;
+    text-align: center;
 
 
     .inative {
@@ -33,11 +38,104 @@ export const TypeIcons = styled.div`
     }
 
     img {
-        max-width: 50px;
-        margin: 15px;
+        max-width: 40px;
+        margin: 5px;
         cursor: pointer;
 
     }
 `
 
-export const Input = styled.div``
+export const Input = styled.div`
+    max-width: 85%;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    span {
+        color: #707070;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        border-bottom: 1px solid ${cor.seccundaryColor};
+    }
+    
+`
+
+export const TextArea = styled.div`
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+
+    span {
+        color: #707070;
+        margin-bottom: 5px;
+    }   
+    
+    textarea {
+        width: 90%;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        border: 1px solid ${cor.seccundaryColor};
+    }    
+
+`
+
+export const Options = styled.div`
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        font-weight: bold;
+        color: ${cor.seccundaryColor};
+        border: none;
+        background: none;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+
+    div {
+        display: flex;
+        align-items: center;
+        color: ${cor.seccundaryColor};
+        font-size: 
+    }
+
+`
+
+export const Save = styled.div`
+    margin: 15px;
+    margin-top: 25px;
+    width: 90%;
+
+    button {
+        width: 100%;
+        background: ${cor.primaryColor};
+        border: none;
+        font-size: 20px;
+        color: ${cor.branco};
+        font-weight: bold;
+        padding: 20px;
+        border-radius: 30px;
+        margin-bottom: 50px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+    }
+
+`

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as S from "./styles";
+import {format} from 'date-fns';
+
+
 import api from "../../services/api";
 
 // Componentes
@@ -9,10 +12,23 @@ import typeIcons from "../../utils/typeIcons";
 
 
 
-function Task() {
+function Task({match}) {
 
     const [lateCount, setLateCount] = useState();
     const [type, setType] = useState();
+
+    const [id, setId] = useState();
+    const [done, setDone] = useState(false);
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [date, setDate] = useState();
+    const [hour, setHour] = useState();
+    const [value, setValue] = useState();
+
+    const [macaddress, setMacaddress] = useState('11-11-11-11-11-11');
+    
+
+
 
   async function lateVerify(){
     await api.get(`https://check-to-do.herokuapp.com/task/filter/late/11-11-11-11-11-11`)
@@ -21,8 +37,34 @@ function Task() {
     })    
   }
 
+  async function LoadTaskDetails(){
+      await api.get(`https://check-to-do.herokuapp.com/task/${match.params.id}`)
+      .then(response => {
+        setType(response.data.type)
+        setTitle(response.data.title)
+        setDescription(response.data.description)
+        setValue(response.data.value)
+        setDate(format(new Date(response.data.when), 'yyyy-MM-dd' ))
+        setHour(format(new Date(response.data.when), 'HH:mm' ))
+      })
+  }
+
+  async function Save(){
+      await api.post('https://check-to-do.herokuapp.com/task', {
+          macaddress,
+          type,
+          title,
+          description,
+          value,
+          when: `${date}T${hour}:00.000`
+      }).then(()=>
+          alert('TAREFA CADASTRADA COM SUCESSO!')
+      )
+  }
+
   useEffect(() => {
     lateVerify();
+    LoadTaskDetails();
   }, [])
 
   return (
@@ -35,16 +77,56 @@ function Task() {
                   typeIcons.map((icon, index) => (
                       index > 0 && 
                       <button type="button" onClick={() => setType(index)}>
-                        <img src={icon} alt={icon} className={type && type != index && 'inative'} />
+                        <img src={icon} alt={icon} className={type && type !== index && 'inative'} />
                       </button>
                   ))
               }
           </S.TypeIcons>
 
           <S.Input>
-              <span>Título</span>
-              <input type="text" placeholder="Título da Tarefa"></input>
+              <span>Nome</span>
+              <input type="text" placeholder="Nome" 
+              onChange={e => setTitle(e.target.value)} value={title} />
           </S.Input>
+
+          <S.TextArea>
+              <span>Detalhes</span>
+              <textarea rows={5} placeholder="Detalhes do Agendamento" 
+              onChange={e => setDescription(e.target.value)} value={description} />
+          </S.TextArea>
+
+          <S.Input>
+              <span>Data</span>
+              <input type="date" placeholder="Data do Agendamento"
+              onChange={e => setDate(e.target.value)} value={date} />
+          </S.Input>
+
+          <S.Input>
+              <span>Hora</span>
+              <input type="time" placeholder="Hora do Agendamento"
+              onChange={e => setHour(e.target.value)} value={hour} />
+          </S.Input>
+
+          <S.Input>
+              <span>Valor</span>
+              <input type="text" placeholder="Valor do Agendamento"
+              onChange={e => setValue(e.target.value)} value={value} />
+          </S.Input>          
+
+          <S.Options>
+              <div>
+                  <input type="checkbox" checked={done} onChange={() => setDone(!done)}/>
+                  <span>CONCLUÍDO</span>
+              </div>
+              <button type="button">EXCLUIR</button>
+          </S.Options>
+          
+          <S.Save>
+              <button type="button" onClick={Save}>
+                  SALVAR
+              </button>
+
+          </S.Save>
 
       </S.Form>
 
