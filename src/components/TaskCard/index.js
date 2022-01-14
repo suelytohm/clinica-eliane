@@ -5,7 +5,7 @@ import * as S from "./styles";
 import typeIcons from "../../utils/typeIcons";
 
 
-function TaskCard({ type, title, when, valor, done, description }) {
+function TaskCard({ type, title, when, hora, valor, done, description }) {
 
   const date = useMemo(() => 
     format(new Date(when), 'dd/MM/yyyy')
@@ -29,7 +29,7 @@ function TaskCard({ type, title, when, valor, done, description }) {
         <span>Agendado para: {date}</span>        
       </S.TopCard>
       <S.BottomCard>
-        <h4>{hour} hrs</h4>
+        <h4>{hora} hrs</h4>
         <h4>Valor: R$ {valorConvertido}</h4>
       </S.BottomCard>
     </S.Container>
