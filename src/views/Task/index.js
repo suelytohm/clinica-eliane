@@ -47,7 +47,8 @@ function Task({match}) {
         setDescription(response.data.description)
         setValue(response.data.value)
         setDate(format(new Date(response.data.when), 'yyyy-MM-dd' ))
-        setHour(format(new Date(response.data.when), 'HH:mm' ))
+        setHour(response.data.hora)
+        // setHour(format(new Date(response.data.when), 'HH:mm' ))
       })
   }
 
@@ -69,9 +70,6 @@ function Task({match}) {
         
 
 
-
-
-
     if(match.params.id){
         await api.put(`https://check-to-do.herokuapp.com/task/${match.params.id}`, {
             macaddress,
@@ -80,7 +78,8 @@ function Task({match}) {
             title,
             description,
             value,
-            when: `${date}T${hour}:00.000`
+            when: `${date}T${hour}:00.000`,
+            hora: hour
         }).then(()=>
             setRedirect(true)
         )
@@ -94,13 +93,29 @@ function Task({match}) {
             title,
             description,
             value,
-            when: `${date}T${hour}:00.000`
+            when: `${date}T${hour}:00.000`,
+            hora: hour
         }).then(()=>
             setRedirect(true)
         )
     }
 
   }
+
+
+  async function Remove(){
+      const res = window.confirm('Are you sure you want to remove?');
+      if(res == true){
+        alert('Ok, vamos remover!')
+
+        await api.delete(`https://check-to-do.herokuapp.com/task/${match.params.id}`)
+            .then(() => setRedirect(true));
+      }else{
+        alert('Tudo bem, vamos manter!')
+      }
+  }
+
+
 
   useEffect(() => {
     lateVerify();
@@ -159,7 +174,7 @@ function Task({match}) {
                   <input type="checkbox" checked={done} onChange={() => setDone(!done)}/>
                   <span>CONCLUÍDO</span>
               </div>
-              <button type="button">EXCLUIR</button>
+              { match.params.id && <button type="button" onClick={Remove}>EXCLUIR</button>}
           </S.Options>
           
           <S.Save>
