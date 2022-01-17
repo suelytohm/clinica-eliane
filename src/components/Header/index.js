@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from "./styles";
 import {Link} from "react-router-dom";
 
 import logo from '../../assets/logo4.png';
 import bell from '../../assets/bell2.png';
 
+import api from '../../services/api';
 
-function Header({ lateCount, clickNotification }) {
+function Header({ clickNotification }) {
+  const [lateCount, setLateCount] = useState();
+
+
+
+  async function lateVerify(){
+    await api.get(`https://check-to-do.herokuapp.com/task/filter/late/11-11-11-11-11-11`)
+    .then(response => {
+      setLateCount(response.data.length)
+    })
+  }
+
+  useEffect(() => {
+    lateVerify();
+  })
+
   return (
     <S.Container>
       <S.LeftSide>

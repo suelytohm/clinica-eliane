@@ -15,7 +15,6 @@ import typeIcons from "../../utils/typeIcons";
 
 function Task({match}) {
 
-    const [lateCount, setLateCount] = useState();
     const [type, setType] = useState();
 
     const [id, setId] = useState();
@@ -29,14 +28,6 @@ function Task({match}) {
     const [macaddress, setMacaddress] = useState('11-11-11-11-11-11');
     
     const [redirect, setRedirect] = useState(false);
-
-
-  async function lateVerify(){
-    await api.get(`https://check-to-do.herokuapp.com/task/filter/late/11-11-11-11-11-11`)
-    .then(response => {
-      setLateCount(response.data.length);
-    })    
-  }
 
   async function LoadTaskDetails(){
       await api.get(`https://check-to-do.herokuapp.com/task/${match.params.id}`)
@@ -118,14 +109,13 @@ function Task({match}) {
 
 
   useEffect(() => {
-    lateVerify();
     LoadTaskDetails();
   }, [])
 
   return (
     <S.Container>
         {redirect && <Redirect to="/" />}
-      <Header lateCount={lateCount} />
+      <Header />
 
       <S.Form>
           <S.TypeIcons>
