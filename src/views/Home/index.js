@@ -14,7 +14,6 @@ function Home() {
   
   const [filterActived, setFilterActived] = useState('today');
   const [tasks, setTasks] = useState([]);
-  const [lateCount, setLateCount] = useState();
 
   let totalValor = 0;
 

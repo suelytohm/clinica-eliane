@@ -8,3 +8,21 @@ export const Container = styled.div`
     
     
 `
+
+export const Content = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 100px;
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }    
+    
+`
+
+export const Controles = styled.div`
+    margin-left: 50px;
+`
