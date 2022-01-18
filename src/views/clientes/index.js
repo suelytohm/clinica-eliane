@@ -47,6 +47,7 @@ function Clientes(){
                 <Link to={"/clientes"}>
                     <ClientsMenu title={"+ Cadastrar"} />
                 </Link>
+                <input type="text" placeholder="Pesquisar" />
             </S.Controles>
             <S.Content>
                 {

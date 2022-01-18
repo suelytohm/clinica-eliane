@@ -39,6 +39,17 @@ export const Controles = styled.div`
         color: #fff;
     }
 
+    input {
+        width: 250px;
+        height: 50px;
+        margin: 15px;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 15px;
+        border: 2px solid ${cor.seccundaryColor};
+
+    }
+
 `
 export const Titulo = styled.div`
     margin: 30px;
