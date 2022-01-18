@@ -19,6 +19,10 @@ import ClientsMenu from "../../components/ClientsMenu";
 function Clientes(){
 
     const [clientes, setClientes] = useState([]);
+    const [text, setText] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+
+
 
 
 
@@ -32,9 +36,28 @@ function Clientes(){
 
 
     useEffect(() => {
-        loadClients();
-    })
+        // loadClients();
+        const loadClients = async () => {
+            const response = await api.get(`https://check-to-do.herokuapp.com/client`);
+            console.log(response.data);
+            setClientes(response.data);
+        }
+        loadClients(); 
+    }, [])
 
+    const onChangeHandler = (text) => {
+        let matches = [];
+        if(text.length > 2) {
+            matches = clientes.filter(clientes => {
+                const regex = new RegExp(`${text}`, "gi");
+                return clientes.name.match(regex)
+            })
+
+        }
+        console.log('matches', matches)
+        setSuggestions(matches);
+        setText(text);
+    }
 
     return (
         <S.Container>
@@ -47,11 +70,15 @@ function Clientes(){
                 <Link to={"/clientes"}>
                     <ClientsMenu title={"+ Cadastrar"} />
                 </Link>
-                <input type="text" placeholder="Pesquisar" />
+
+                <input type="text" placeholder="Pesquisar" 
+                onChange={e => onChangeHandler(e.target.value)}
+                value={text} />
+
             </S.Controles>
             <S.Content>
                 {
-                    clientes.map(c => (
+                    suggestions && suggestions.map((c, i) => (
                         <Link to={`clientes/${c._id}`}>
                             <ClientsCard nome={c.name} type={c.type} description={c.description} phone={c.phone} rua={c.rua} numero={c.numero} bairro={c.bairro} cidade={c.cidade} estado={c.estado} />
                         </Link>
