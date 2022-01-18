@@ -34,14 +34,18 @@ function Header({ clickNotification }) {
         <Link to="/task">Agendar</Link>
         <span className="dividir" />
         <Link to="/clientes">Clientes</Link>
-        <span className="dividir" />
-        <button id="notification" onClick={clickNotification}>
-          <img src={bell} alt="Notificação" />
-          <span>{lateCount}</span>
-        </button>
+        {
+          lateCount > 0 &&
+          <>
+            <span className="dividir" />
+            <button id="notification" onClick={clickNotification}>
+              <img src={bell} alt="Notificação" />
+              <span>{lateCount}</span>
+            </button>
+          </>
+        }
       </S.RightSide>
     </S.Container>
-
   )
 }
 

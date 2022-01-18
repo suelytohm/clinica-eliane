@@ -11,6 +11,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import typeIcons from "../../utils/typeIcons";
 import ClientsCard from "../../components/ClientsCard";
+import ClientsMenu from "../../components/ClientsMenu";
+
 
 
 
@@ -37,12 +39,16 @@ function Clientes(){
     return (
         <S.Container>
             <Header />
-            <S.Controles>
+            <S.Titulo>
                 <h1>Clientes</h1>
+            </S.Titulo>
+            <S.Controles>
 
+                <Link to={"/clientes"}>
+                    <ClientsMenu title={"+ Cadastrar"} />
+                </Link>
             </S.Controles>
             <S.Content>
-
                 {
                     clientes.map(c => (
                         <Link to={`clientes/${c._id}`}>

@@ -5,7 +5,7 @@ var cor = cores();
 
 export const Container = styled.div`
 
-width: 250px;
+    width: 250px;
     min-height: 250px;
     height: auto;
     box-shadow: 7px 7px 21px -5px rgba(0,0,0,0.75);

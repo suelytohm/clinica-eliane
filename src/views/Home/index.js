@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {Link} from 'react-router-dom';
 import * as S from "./styles";
 import api from "../../services/api";
+import { format } from 'date-fns';
 
 // Componentes
 import Header from '../../components/Header';
@@ -31,6 +32,7 @@ function Home() {
     setFilterActived('late');
 
   }
+
 
   useEffect(() => {
     loadTasks();
@@ -66,6 +68,7 @@ function Home() {
         {
           tasks.map(t => (
             <Link to={`/task/${t._id}`}>
+              
               <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} hora={t.hora} description={t.description} />
             </Link>
           ))

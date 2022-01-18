@@ -24,5 +24,22 @@ export const Content = styled.div`
 `
 
 export const Controles = styled.div`
-    margin-left: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+
+`
+export const Titulo = styled.div`
+    margin: 30px;
 `
