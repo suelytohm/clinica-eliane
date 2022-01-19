@@ -164,7 +164,52 @@ function ClientesCadastro({match}) {
               <span>Telefone</span>
               <input type="text" placeholder="Número"
               onChange={e => setPhone(e.target.value)} value={phone} />
-          </S.Input>          
+          </S.Input>      
+
+
+
+
+
+
+
+
+
+
+
+
+          <S.Input>
+              <span>Rua</span>
+              <input type="text" placeholder="Rua" 
+              onChange={e => setRua(e.target.value)} value={rua} />
+          </S.Input>
+
+          <S.Input>
+              <span>Número</span>
+              <input type="number" placeholder="Número" 
+              onChange={e => setNumero(e.target.value)} value={numero} />
+          </S.Input>
+
+          <S.Input>
+              <span>Bairro</span>
+              <input type="text" placeholder="Bairro" 
+              onChange={e => setBairro(e.target.value)} value={bairro} />
+          </S.Input>
+
+          <S.Input>
+              <span>Cidade</span>
+              <input type="text" placeholder="Cidade" 
+              onChange={e => setCidade(e.target.value)} value={cidade} />
+          </S.Input>
+
+          <S.Input>
+              <span>Estado</span>
+              <input type="text" placeholder="Estado" 
+              onChange={e => setEstado(e.target.value)} value={estado} />
+          </S.Input>
+
+
+
+
           
           <S.Save>
               <button type="button" onClick={Save}>
