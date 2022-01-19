@@ -26,13 +26,14 @@ function Task({match}) {
     const [value, setValue] = useState();
 
     const [macaddress, setMacaddress] = useState('11-11-11-11-11-11');
-    
     const [redirect, setRedirect] = useState(false);
 
 
 
     const [clientes, setClientes] = useState();
     const [text, setText] = useState();
+    const [idClient, setIdClient] = useState('');
+    
 
     
     const [suggestions, setSuggestions] = useState();
@@ -50,6 +51,7 @@ function Task({match}) {
         setValue(response.data.value)
         setDate(format(new Date(response.data.when), 'yyyy-MM-dd' ))
         setHour(response.data.hora)
+        setIdClient(response.data.idClient)
         // setHour(format(new Date(response.data.when), 'HH:mm' ))
       })
   }
@@ -81,7 +83,8 @@ function Task({match}) {
             description,
             value,
             when: `${date}T${hour}:00.000`,
-            hora: hour
+            hora: hour,
+            idClient
         }).then(()=>
             setRedirect(true)
         )
@@ -96,7 +99,8 @@ function Task({match}) {
             description,
             value,
             when: `${date}T${hour}:00.000`,
-            hora: hour
+            hora: hour,
+            idClient
         }).then(()=>
             setRedirect(true)
         )
@@ -133,8 +137,10 @@ function Task({match}) {
       }
   }, [])
 
-  const onSuggestHandler = (text) => {
-      setTitle(text);
+  const onSuggestHandler = (sugestion) => {
+      setTitle(sugestion.name);
+      setType(sugestion.type);
+      setIdClient(sugestion.id);
       setSuggestions([]);
   }
 
@@ -179,7 +185,7 @@ function Task({match}) {
             </S.Input>
             {suggestions && suggestions.map((suggestion, i) => 
                 <div key={i} className="sugestao"
-                onClick={() => onSuggestHandler(suggestion.name)}
+                onClick={() => onSuggestHandler(suggestion)}
                 >{suggestion.name}</div>
             )}
           </div>
