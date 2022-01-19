@@ -29,6 +29,17 @@ function Task({match}) {
     
     const [redirect, setRedirect] = useState(false);
 
+
+
+    const [clientes, setClientes] = useState();
+    const [text, setText] = useState();
+
+    
+    const [suggestions, setSuggestions] = useState();
+    
+
+    
+
   async function LoadTaskDetails(){
       await api.get(`https://check-to-do.herokuapp.com/task/${match.params.id}`)
       .then(response => {
@@ -109,8 +120,36 @@ function Task({match}) {
 
 
   useEffect(() => {
-    LoadTaskDetails();
+      if(match.params.id){
+          LoadTaskDetails();
+      }else{
+          const loadClients = async () => {
+              const response = await api.get(`https://check-to-do.herokuapp.com/client`);
+              console.log(response.data);
+              setClientes(response.data);
+          }
+          loadClients();               
+          
+      }
   }, [])
+
+  const onSuggestHandler = (text) => {
+      setTitle(text);
+      setSuggestions([]);
+  }
+
+  const onChangeHandler = (title) => {
+      let matches = [];
+      if(title.length > 0){
+          matches = clientes.filter(cli=>{
+              const regex = new RegExp(`${title}`,"gi");
+              return cli.name.match(regex)
+          })
+      }
+      console.log('matches', matches);
+      setSuggestions(matches)
+      setTitle(title);
+  }
 
   return (
     <S.Container>
@@ -129,11 +168,21 @@ function Task({match}) {
               }
           </S.TypeIcons>
 
-          <S.Input>
-              <span>Nome</span>
-              <input type="text" placeholder="Nome" 
-              onChange={e => setTitle(e.target.value)} value={title} />
-          </S.Input>
+          <div>
+            <S.Input>
+                <span>Nome</span>
+                <input type="text" placeholder="Nome" 
+                onChange={(e) => {
+                    onChangeHandler(e.target.value);
+                    setTitle(e.target.value);
+                    }} value={title} />
+            </S.Input>
+            {suggestions && suggestions.map((suggestion, i) => 
+                <div key={i} className="sugestao"
+                onClick={() => onSuggestHandler(suggestion.name)}
+                >{suggestion.name}</div>
+            )}
+          </div>
 
           <S.TextArea>
               <span>Detalhes</span>

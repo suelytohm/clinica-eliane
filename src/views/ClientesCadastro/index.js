@@ -38,7 +38,6 @@ function ClientesCadastro({match}) {
         setDescription(response.data.description)
         setPhone(response.data.phone)
         setRua(response.data.rua)
-
         setNumero(response.data.numero)
         setBairro(response.data.bairro)
         setCidade(response.data.cidade)

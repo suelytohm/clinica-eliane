@@ -17,8 +17,6 @@ export const Form = styled.div`
     margin-top: 25px;
     margin-bottom: 25px;
     
-
-
 `
 
 export const TypeIcons = styled.div`

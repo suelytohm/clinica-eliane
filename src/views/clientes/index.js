@@ -45,6 +45,8 @@ function Clientes(){
         loadClients(); 
     }, [])
 
+
+
     const onChangeHandler = (text) => {
         let matches = [];
         if(text.length > 2) {
@@ -58,6 +60,7 @@ function Clientes(){
         setSuggestions(matches);
         setText(text);
     }
+    
 
     return (
         <S.Container>

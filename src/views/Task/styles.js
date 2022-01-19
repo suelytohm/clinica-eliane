@@ -18,6 +18,19 @@ export const Form = styled.div`
     margin-bottom: 25px;
     
 
+    .sugestao{
+        width: 85%;
+        margin-left: 25px;
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid ${cor.seccundaryColor};
+
+        &:hover{
+            background: ${ cor.primaryColor};
+            color: ${ cor.branco};
+
+        }
+    }
 
 `
 
