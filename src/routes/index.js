@@ -4,6 +4,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Home from '../views/Home';
 import Task from '../views/Task';
 import Clientes from '../views/clientes';
+import ClientesCadastro from '../views/ClientesCadastro';
+
 
 
 export default function Routes(){
@@ -15,7 +17,9 @@ export default function Routes(){
                 <Route path="/task/:id" exact component={Task} />
 
                 <Route path="/clientes" exact component={Clientes} />
-                <Route path="/clientes/:id" exact component={Clientes} />
+                <Route path="/clientesCadastro" exact component={ClientesCadastro} />
+                <Route path="/clientes/:id" exact component={ClientesCadastro} />
+
             </Switch>
         </BrowserRouter>
     )

@@ -67,7 +67,7 @@ function Clientes(){
             </S.Titulo>
             <S.Controles>
 
-                <Link to={"/clientes"}>
+                <Link to={"/clientesCadastro"}>
                     <ClientsMenu title={"+ Cadastrar"} />
                 </Link>
 
