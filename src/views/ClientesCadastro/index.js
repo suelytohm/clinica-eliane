@@ -44,6 +44,7 @@ function ClientesCadastro({match}) {
         setCidade(response.data.cidade)
         setEstado(response.data.estado)
 
+        setNiver(response.data.niver)
 
         // setNiver(format(new Date(response.data.niver), 'yyyy-MM-dd' ))
         // setHour(response.data.hora)
