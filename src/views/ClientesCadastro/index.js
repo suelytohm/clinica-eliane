@@ -20,11 +20,11 @@ function ClientesCadastro({match}) {
     const [name, setName] = useState();
     const [description, setDescription] = useState();
     const [phone, setPhone] = useState();
-    const [rua, setRua] = useState();
+    const [rua, setRua] = useState('');
     const [numero, setNumero] = useState();
-    const [bairro, setBairro] = useState();
-    const [cidade, setCidade] = useState();
-    const [estado, setEstado] = useState();
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
     const [niver, setNiver] = useState();
 
     const [macaddress, setMacaddress] = useState('11-11-11-11-11-11');
