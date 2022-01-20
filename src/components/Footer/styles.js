@@ -19,6 +19,10 @@ export const Container = styled.div`
         color: #FFF;
     }
 
+    img {
+        width: 150px;
+    }
+
 `
 
 // #EE6B26;
