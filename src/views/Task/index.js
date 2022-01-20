@@ -126,7 +126,7 @@ function Task({match}) {
   useEffect(() => {
       if(match.params.id){
           LoadTaskDetails();
-      }else{
+
           const loadClients = async () => {
               const response = await api.get(`https://check-to-do.herokuapp.com/client`);
               console.log(response.data);
@@ -140,7 +140,8 @@ function Task({match}) {
   const onSuggestHandler = (sugestion) => {
       setTitle(sugestion.name);
       setType(sugestion.type);
-      setIdClient(sugestion.id);
+      setIdClient(sugestion._id);
+
       setSuggestions([]);
   }
 
@@ -224,7 +225,7 @@ function Task({match}) {
           
           <S.Save>
               <button type="button" onClick={Save}>
-                  SALVAR
+                  SALVAR {idClient}
               </button>
 
           </S.Save>
