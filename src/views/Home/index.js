@@ -79,9 +79,10 @@ function Home() {
       <Header clickNotification={Notification} />
 
       <S.FilterArea>
-        <button type="button" onClick={() => setFilterActived("all")}>
-          <FilterCard title="Todos" actived={filterActived === "all"} onClick={() => setFilterActived("all")} />
-        </button>  
+        <button type="button" onClick={() => setFilterActived("year")}>
+          <FilterCard title="Todos" actived={filterActived === "year"} onClick={() => setFilterActived("year")} />
+        </button>
+
         <button type="button" onClick={() => setFilterActived("today")}>
           <FilterCard title="Hoje" actived={filterActived === "today"} onClick={() => setFilterActived("today")} />
         </button>
@@ -91,9 +92,7 @@ function Home() {
         <button type="button" onClick={() => setFilterActived("month")}>
           <FilterCard title="Mês" actived={filterActived === "month"} onClick={() => setFilterActived("month")} />
         </button>
-        <button type="button" onClick={() => setFilterActived("year")}>
-          <FilterCard title="Ano" actived={filterActived === "year"} onClick={() => setFilterActived("year")} />
-        </button>
+
       </S.FilterArea>
 
       <S.Title>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import * as S from "./styles";
 import {format} from 'date-fns';
 
@@ -114,7 +114,9 @@ function ClientesCadastro({match}) {
         <h1>Dados do Cliente</h1>
         {
             match.params.id &&
-            <button type="button">Histórico</button>
+            <Link to={`/clientes/historico/${match.params.id}`}>
+                <button type="button">Histórico</button>
+            </Link>
         }
       </S.Topo>
       <S.Form>

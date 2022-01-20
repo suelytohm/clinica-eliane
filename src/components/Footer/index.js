@@ -11,8 +11,8 @@ import nexus from '../../assets/nexusplanet3.png';
 function Footer() {
   return (
     <S.Container>
-      <img src={nexus}></img>
-        <span> - Simplificando sua vida</span>
+        <img src={nexus}></img>
+        <span> Simplificando sua vida</span>
     </S.Container>
 
   )
