@@ -111,7 +111,7 @@ function Task({match}) {
 
   async function Remove(){
       const res = window.confirm('Are you sure you want to remove?');
-      if(res == true){
+      if(res === true){
         alert('Ok, vamos remover!')
 
         await api.delete(`https://check-to-do.herokuapp.com/task/${match.params.id}`)
@@ -126,15 +126,14 @@ function Task({match}) {
   useEffect(() => {
       if(match.params.id){
           LoadTaskDetails();
-
-          const loadClients = async () => {
-              const response = await api.get(`https://check-to-do.herokuapp.com/client`);
-              console.log(response.data);
-              setClientes(response.data);
-          }
-          loadClients();               
-          
-      }
+        }
+        const loadClients = async () => {
+            const response = await api.get(`https://check-to-do.herokuapp.com/client`);
+            console.log(response.data);
+            setClientes(response.data);
+        }
+        loadClients();
+      
   }, [])
 
   const onSuggestHandler = (sugestion) => {
@@ -218,14 +217,14 @@ function Task({match}) {
           <S.Options>
               <div>
                   <input type="checkbox" checked={done} onChange={() => setDone(!done)}/>
-                  <span>CONCLUÍDO</span>
+                  <span><strong>CONCLUÍDO</strong></span>
               </div>
               { match.params.id && <button type="button" onClick={Remove}>EXCLUIR</button>}
           </S.Options>
           
           <S.Save>
               <button type="button" onClick={Save}>
-                  SALVAR {idClient}
+                  SALVAR
               </button>
 
           </S.Save>

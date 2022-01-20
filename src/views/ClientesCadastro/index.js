@@ -60,13 +60,7 @@ function ClientesCadastro({match}) {
         return alert("Você precisa informar a descrição!")
     else if(!type)
         return alert("Você precisa selecionar um avatar!")
-    /*else if(!value)
-        return alert("Você precisa informar o valor!")       
-    else if(!date)
-        return alert("Você precisa informar a data!")    
-    else if(!hour)
-        return alert("Você precisa informar a hora!")                             
-*/
+
 
     if(match.params.id){
         await api.put(`https://check-to-do.herokuapp.com/client/${match.params.id}`, {
@@ -106,20 +100,6 @@ function ClientesCadastro({match}) {
 
   }
 
-/*
-  async function Remove(){
-      const res = window.confirm('Are you sure you want to remove?');
-      if(res == true){
-        alert('Ok, vamos remover!')
-
-        await api.delete(`https://check-to-do.herokuapp.com/task/${match.params.id}`)
-            .then(() => setRedirect(true));
-      }else{
-        alert('Tudo bem, vamos manter!')
-      }
-  }
-*/
-
 
   useEffect(() => {
     LoadClientDetails();
@@ -130,7 +110,15 @@ function ClientesCadastro({match}) {
         {redirect && <Redirect to="/clientes" />}
       <Header />
 
+      <S.Topo>
+        <h1>Dados do Cliente</h1>
+        {
+            match.params.id &&
+            <button type="button">Histórico</button>
+        }
+      </S.Topo>
       <S.Form>
+          <p>Avatar:</p>
           <S.TypeIcons>
               {
                   typeIcons.map((icon, index) => (

@@ -16,6 +16,33 @@ export const Container = styled.div`
 export const Form = styled.div`
     margin-top: 25px;
     margin-bottom: 25px;
+
+    p{
+        margin-left: 15px;
+    }
+    
+`
+
+export const Topo = styled.div`
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    button {
+        width: 100%;
+        height: 50px;
+        background: ${cor.primaryColor};
+        color: ${cor.branco};
+        border-radius: 30px;
+        font-size: 18px;
+        box-shadow: 7px 7px 21px -5px rgba(0,0,0,0.75);
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
     
 `
 
@@ -27,7 +54,7 @@ export const TypeIcons = styled.div`
 
 
     .inative {
-        opacity: 0.5;
+        opacity: 0.2;
     }
 
     button {

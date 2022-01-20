@@ -55,3 +55,9 @@ export const Title = styled.div`
     }
 
 `
+export const TituloSeparador = styled.div`
+    width: 90%;
+    border-bottom: 1px solid ${cor.seccundaryColor};;
+    margin: 25px;
+    color: ${cor.seccundaryColor};
+`

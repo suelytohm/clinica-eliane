@@ -24,6 +24,8 @@ export const Form = styled.div`
         padding: 5px;
         cursor: pointer;
         border: 1px solid ${cor.seccundaryColor};
+        background-color: ${cor.seccundaryColor};
+        color: ${cor.branco};
 
         &:hover{
             background: ${ cor.primaryColor};

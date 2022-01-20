@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import * as S from "./styles";
 import api from "../../services/api";
-import { format } from 'date-fns';
 
 // Componentes
 import Header from '../../components/Header';
@@ -15,8 +14,10 @@ function Home() {
   
   const [filterActived, setFilterActived] = useState('today');
   const [tasks, setTasks] = useState([]);
+  let mes = "";
+  let mesAntes = "";
+  let contador = 6;
 
-  let totalValor = 0;
 
   // https://check-to-do.herokuapp.com/
   async function loadTasks() {
@@ -26,7 +27,42 @@ function Home() {
     })
   }
 
+  function getMes(when){
+    let date = new Date(when);
+    mesAntes = mes;
+    mes = date.getMonth()+1;
 
+    if(mesAntes !== mes){
+      contador = 0;
+    }
+
+
+    if(mes === 1)
+      mes = "Janeiro"
+    else if(mes === 2)
+      mes = "Fevereiro"
+    else if(mes === 3)
+      mes = "Março"
+    else if(mes === 4)
+      mes = "Abril"
+    else if(mes === 5)
+      mes = "Maio"
+    else if(mes === 6)
+      mes = "Junho"
+    else if(mes === 7)
+      mes = "Julho"
+    else if(mes === 8)
+      mes = "Agosto"
+    else if(mes === 9)
+      mes = "Setembro"
+    else if(mes === 10)
+      mes = "Outubro"
+    else if(mes === 11)
+      mes = "Novembro"
+    else if(mes === 12)
+      mes = "Dezembro"      
+    return mes;
+  }
 
   function Notification(){
     setFilterActived('late');
@@ -67,10 +103,20 @@ function Home() {
       <S.Content>
         {
           tasks.map(t => (
+            <>
+              {
+                filterActived === 'year' &&
+                getMes(t.when) &&
+                mesAntes !== mes &&
+                
+                <S.TituloSeparador>
+                  <h2>{mes}</h2>
+                </S.TituloSeparador>
+              }
             <Link to={`/task/${t._id}`}>
-              
               <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} hora={t.hora} description={t.description} />
             </Link>
+            </>
           ))
         }
       </S.Content>

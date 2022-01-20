@@ -56,7 +56,6 @@ function Clientes(){
             })
 
         }
-        console.log('matches', matches)
         setSuggestions(matches);
         setText(text);
     }
