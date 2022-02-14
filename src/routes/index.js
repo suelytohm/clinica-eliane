@@ -7,6 +7,9 @@ import Clientes from '../views/clientes';
 import ClientesCadastro from '../views/ClientesCadastro';
 import ClientesHistorico from '../views/ClientesHistorico';
 
+import QrCode from '../views/QrCode';
+
+
 
 
 
@@ -22,6 +25,10 @@ export default function Routes(){
                 <Route path="/clientesCadastro" exact component={ClientesCadastro} />
                 <Route path="/clientes/:id" exact component={ClientesCadastro} />
                 <Route path="/clientes/historico/:id" exact component={ClientesHistorico} />
+
+
+                <Route path="/QrCode/:id" exact component={QrCode} />
+
 
 
             </Switch>
