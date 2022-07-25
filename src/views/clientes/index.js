@@ -81,7 +81,7 @@ function Clientes(){
             <S.Content>
                 {
                     suggestions && suggestions.map((c, i) => (
-                        <Link to={`clientes/${c._id}`}>
+                        <Link to={`clientes/${c._id}`}  key={c._id}>
                             <ClientsCard nome={c.name} type={c.type} description={c.description} phone={c.phone} rua={c.rua} numero={c.numero} bairro={c.bairro} cidade={c.cidade} estado={c.estado} />
                         </Link>
                     ))

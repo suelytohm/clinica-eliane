@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import { format } from 'date-fns';
 import * as S from "./styles";
 
-import typeIcons from "../../utils/typeIcons";
+import TypeIcons from "../../utils/typeIcons";
 
 
 function ClientsCard({ nome, type, description, phone, rua, bairro, numero, cidade, estado }) {
@@ -10,8 +10,9 @@ function ClientsCard({ nome, type, description, phone, rua, bairro, numero, cida
   return (
     <S.Container>
       <S.TopCard>
+          <img src={TypeIcons[type]} alt="Icone da tarefa" />
           <h1>{nome}</h1>
-          <p><strong>Telefone:</strong></p>
+          <h2><strong>Telefone:</strong></h2>
           <p>{phone}</p>
       </S.TopCard>
       <S.BottomCard>

@@ -15,7 +15,7 @@ export const Container = styled.div`
 
     
     display: flex;   
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     flex-direction: column;
     margin: 10px;
@@ -28,7 +28,12 @@ export const Container = styled.div`
 
 
     img {
-        max-width: 35%;
+        max-width: 25%;
+        display: flex;   
+        align-items: center;
+
+        justify-content: center;
+        flex-direction: column;
     }
     
     &:hover {

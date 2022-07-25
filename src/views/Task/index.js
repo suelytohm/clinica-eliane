@@ -58,7 +58,6 @@ function Task({match}) {
 
   async function Save(){
       // Validação dos dados
-
     if(!title)
        return alert("Você precisa informar o nome!")
     else if(!description)
@@ -72,7 +71,6 @@ function Task({match}) {
     else if(!hour)
         return alert("Você precisa informar a hora!")                       
         
-
 
     if(match.params.id){
         await api.put(`https://check-to-do.herokuapp.com/task/${match.params.id}`, {
@@ -89,7 +87,6 @@ function Task({match}) {
             setRedirect(true)
         )
 
-        
     }else{
         await api.post('https://check-to-do.herokuapp.com/task', {
             macaddress,
@@ -167,7 +164,7 @@ function Task({match}) {
               {
                   typeIcons.map((icon, index) => (
                       index > 0 && 
-                      <button type="button" onClick={() => setType(index)}>
+                      <button type="button" key={index} onClick={() => setType(index)} >
                         <img src={icon} alt={icon} className={type && type !== index && 'inative'} />
                       </button>
                   ))
