@@ -126,7 +126,7 @@ function Task({match}) {
         }
         const loadClients = async () => {
             const response = await api.get(`https://check-to-do.herokuapp.com/client`);
-            console.log(response.data);
+            // console.log(response.data);
             setClientes(response.data);
         }
         loadClients();
@@ -149,7 +149,7 @@ function Task({match}) {
               return cli.name.match(regex)
           })
       }
-      console.log('matches', matches);
+      // console.log('matches', matches);
       setSuggestions(matches)
       setTitle(title);
   }

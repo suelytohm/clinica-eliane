@@ -109,11 +109,11 @@ function Home() {
                 mesAntes !== mes &&
                 
                 <S.TituloSeparador>
-                  <h2>{mes}</h2>
+                  <h2 key={t._id}>{mes}</h2>
                 </S.TituloSeparador>
               }
             <Link to={`/task/${t._id}`}>
-              <TaskCard type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} hora={t.hora} description={t.description} />
+              <TaskCard key={t._id} type={t.type} title={t.title} when={t.when} done={t.done} valor={t.value} hora={t.hora} description={t.description} />
             </Link>
             </>
           ))

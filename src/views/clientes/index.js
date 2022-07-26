@@ -39,7 +39,7 @@ function Clientes(){
         // loadClients();
         const loadClients = async () => {
             const response = await api.get(`https://check-to-do.herokuapp.com/client`);
-            console.log(response.data);
+            // console.log(response.data);
             setClientes(response.data);
         }
         loadClients(); 

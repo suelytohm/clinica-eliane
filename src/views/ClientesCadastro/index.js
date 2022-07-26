@@ -31,6 +31,9 @@ function ClientesCadastro({match}) {
     const [redirect, setRedirect] = useState(false);
 
   async function LoadClientDetails(){
+
+
+    if(match.params.id){
       await api.get(`https://check-to-do.herokuapp.com/client/${match.params.id}`)
       .then(response => {
         setType(response.data.type)
@@ -42,13 +45,13 @@ function ClientesCadastro({match}) {
         setBairro(response.data.bairro)
         setCidade(response.data.cidade)
         setEstado(response.data.estado)
-
         setNiver(response.data.niver)
 
         // setNiver(format(new Date(response.data.niver), 'yyyy-MM-dd' ))
         // setHour(response.data.hora)
         // setHour(format(new Date(response.data.when), 'HH:mm' ))
       })
+    }
   }
 
   async function Save(){
@@ -126,7 +129,7 @@ function ClientesCadastro({match}) {
                   typeIcons.map((icon, index) => (
                       index > 0 && 
                       <button type="button" onClick={() => setType(index)}>
-                        <img src={icon} alt={icon} className={type && type !== index && 'inative'} />
+                        <img key={index} src={icon} alt={icon} className={type && type !== index && 'inative'} />
                       </button>
                   ))
               }
